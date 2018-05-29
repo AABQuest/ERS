@@ -36,7 +36,16 @@ public class ERSBoard
         return false;
     }
     public void resolution(){
+        Player first= players.get(slapOrder.get(0));
         if(this.isLegal(board.get(board.size()-3), board.get(board.size()-2), board.get(board.size()-1)){
-           
+            for (int i = 0; i < board.size(); i++){
+                first.getDeck().add(board.get(i));
+          }
+        }
+        else{
+            board.add(0, first.getDeck().remove(first.getDeck().size()-1));
+        }
+    }
+              
 }
 
