@@ -14,6 +14,13 @@ public class ERSBoard
     private ArrayList<Player> players;
     private Deck deck;
     private ArrayList<Deck> starters;
+    
+    private static final String[] RANKS =
+        {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
+    private static final String[] SUITS =
+        {"spades", "hearts", "diamonds", "clubs"};
+    private static final int[] POINT_VALUES =
+        {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
 
     /**
      * Constructor for objects of class ERSBoard
@@ -23,8 +30,13 @@ public class ERSBoard
         board = new ArrayList<Card>();
         slapOrder = new ArrayList<Integer>();
         players = new ArrayList<Player>();
-        deck = new Deck();
-        
+        starters = new ArrayList<Deck>();
+        deck = new Deck(String[] ranks, String[] suits, int[] values);
+        deck.shuffle();
+        for (int x = 0; x < numPlayers; x++) {
+            starters.add(new Deck());
+        }
+        int 
         for (int x = 0; x < numPlayers; x++) {
             players.add(new Player());
         }
