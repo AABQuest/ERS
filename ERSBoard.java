@@ -35,5 +35,8 @@ public class ERSBoard
         }
         return false;
     }
+    public void resolution(){
+        if(this.isLegal(board.get(board.size()-3), board.get(board.size()-2), board.get(board.size()-1)){
+           
 }
 
