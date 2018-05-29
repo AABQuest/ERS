@@ -14,5 +14,10 @@ public class Player
         return num;
     }
     
+    public Deck getDeck()
+    {
+        return d;
+    }
+    
     
 }
