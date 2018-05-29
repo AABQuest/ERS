@@ -30,7 +30,7 @@ public class ERSBoard
         }
     }
     public boolean isLegal(Card c1, Card c2, Card c3){
-        if(c1.rank().equals(c2.rank()) || c2.rank().equals(c3.rank())){
+        if(c1.rank().equals(c3.rank()) || c2.rank().equals(c3.rank())){
             return true;
         }
         return false;
