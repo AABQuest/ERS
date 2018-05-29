@@ -38,6 +38,11 @@ public class Deck {
             }
         }
     }
+    public Deck()
+    {
+        cards = new ArrayList<Cards>();
+        size = 0;
+    }
 
     /**
      * Determines if this deck is empty (no undealt cards).
@@ -69,6 +74,11 @@ public class Deck {
             cards.set(r, temp);
         }
         size=cards.size();
+    }
+    
+    public void add(Card c)
+    {
+        cards.add(c);
     }
 
     /**
