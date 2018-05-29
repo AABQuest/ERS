@@ -36,7 +36,12 @@ public class ERSBoard
         for (int x = 0; x < numPlayers; x++) {
             starters.add(new Deck());
         }
-        int 
+        int divisions = 52/numPlayers;
+        int leftovers = 52 % numPlayers;
+        int place = 0;
+        for (int x = 0; x < starters.size(); x++) {
+            for (int y = place; y < place + divisions; y++) {
+                starters.get(x).add(deck.get(y))
         for (int x = 0; x < numPlayers; x++) {
             players.add(new Player());
         }
