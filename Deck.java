@@ -76,7 +76,7 @@ public class Deck {
         size=cards.size();
     }
     
-    public void add(Card c)
+    public void addCard(Card c)
     {
         cards.add(c);
     }
