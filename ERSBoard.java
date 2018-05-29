@@ -45,7 +45,7 @@ public class ERSBoard
         else{
             for(int k = 0; k < slapOrder.size() ; k++){
             Player slapPlayerDeck = players.get(slapOrder.get(i)).getDeck()
-            board.add(0, slapPlayerDeck.remove(slapPlayerDeck.size()-1));
+            board.add(0, slapPlayerDeck.getDeck.deal(slapPlayerDeck.size()-1));
         }
     }
               
