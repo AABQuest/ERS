@@ -44,11 +44,6 @@ public class Deck {
             }
         }
     }
-    public Deck()
-    {
-        cards = new ArrayList<Cards>();
-        size = 0;
-    }
 
     /**
      * Determines if this deck is empty (no undealt cards).
