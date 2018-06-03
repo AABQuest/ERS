@@ -12,7 +12,7 @@ public class Player extends JFrame
         
         obj2.getInputMap(WF).put(KeyStroke.getKeyStroke("W"), SLAP);
         
-        obj1.getActionMap().put(MOVE_UP, new MoveAction(1, 1));
+        obj1.getActionMap().put(SLAP, slap());
     
     private Deck d;
     private int num;
@@ -25,7 +25,7 @@ public class Player extends JFrame
     
     public int slap()
     {
-        return num;
+        System.out.print(num);
     }
     
     public Deck getDeck()
