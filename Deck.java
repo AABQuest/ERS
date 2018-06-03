@@ -79,7 +79,8 @@ public class Deck {
     
     public void addCard(Card c)
     {
-        cards.add(c);
+        cards.add(0, c);
+        size++;
     }
 
     /**
@@ -88,12 +89,16 @@ public class Deck {
      *         previously dealt.
      */
     public Card deal() {
-        if(size>0){
-                size--;
-                return cards.get(size);
-        } 
-        return null;
+        if (size > 0) {
+        	Card c = new Card();
+        	c = cards.remove(size - 1);
+        	size = size - 1;
+        	return c;
         }
+        else {
+        	return null;
+        }
+    }
 
     /**
      * Generates and returns a string representation of this deck.
