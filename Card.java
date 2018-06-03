@@ -18,7 +18,6 @@ public class Card {
     /**
      * int value that holds the point value.
      */
-    private int pointValue;
 
 
    /**

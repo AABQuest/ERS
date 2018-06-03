@@ -27,8 +27,14 @@ public class Deck {
      * and produces one of the corresponding card.
      * @param ranks is an array containing all of the card ranks.
      * @param suits is an array containing all of the card suits.
-     * @param values is an array containing all of the card point values.
      */
+    
+    public Deck()
+    {
+        cards = new ArrayList<Card>();
+        size = 0;
+    }
+    
     public Deck(String[] ranks, String[] suits) {
         cards=new ArrayList<Card>();
        for (int i=0; i<ranks.length; i++){
@@ -69,6 +75,11 @@ public class Deck {
             cards.set(r, temp);
         }
         size=cards.size();
+    }
+    
+    public void addCard(Card c)
+    {
+        cards.add(c);
     }
 
     /**

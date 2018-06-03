@@ -19,8 +19,6 @@ public class ERSBoard
         {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
     private static final String[] SUITS =
         {"spades", "hearts", "diamonds", "clubs"};
-    private static final int[] POINT_VALUES =
-        {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
 
     /**
      * Constructor for objects of class ERSBoard
@@ -31,7 +29,7 @@ public class ERSBoard
         slapOrder = new ArrayList<Integer>();
         players = new ArrayList<Player>();
         starters = new ArrayList<Deck>();
-        deck = new Deck(String[] ranks, String[] suits, int[] values);
+        deck = new Deck(RANKS, SUITS);
         deck.shuffle();
         for (int x = 0; x < numPlayers; x++) {
             starters.add(new Deck());
@@ -41,10 +39,13 @@ public class ERSBoard
         int place = 0;
         for (int x = 0; x < starters.size(); x++) {
             for (int y = place; y < place + divisions; y++) {
-                starters.get(x).add(deck.get(y))
-        for (int x = 0; x < numPlayers; x++) {
-            players.add(new Player());
+                starters.get(x).addCard(deck.deal());
+            }
         }
+        for (int x = 0; x < numPlayers; x++) {
+            players.add(new Player(starters.get(x),x+1));
+        }
+          
+
     }
 }
-
