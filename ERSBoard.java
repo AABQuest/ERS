@@ -48,4 +48,24 @@ public class ERSBoard
           
 
     }
+    public boolean isLegal(Card c1, Card c2, Card c3){
+        if(c1.rank().equals(c3.rank()) || c2.rank().equals(c3.rank())){
+            return true;
+        }
+        return false;
+    }
+    public void resolution(){
+        Player first = players.get(slapOrder.get(0));
+        if(this.isLegal(board.get(board.size()-3), board.get(board.size()-2), board.get(board.size()-1)){
+            for (int i = 0; i < board.size(); i++){
+                first.getDeck().addCard(board.get(i));
+          }
+        }
+        else{
+            for(int k = 0; k < slapOrder.size() ; k++){
+            Player slapPlayerDeck = players.get(slapOrder.get(i)).getDeck()
+            board.add(0, slapPlayerDeck.getDeck.deal(slapPlayerDeck.size()-1));
+        }
+    }
+              
 }
