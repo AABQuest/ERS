@@ -32,7 +32,11 @@ public class Card {
         suit=cardSuit;
         rank=cardRank;
         }
-
+    
+    public Card() {
+    	suit = null;
+    	rank = null;
+    }
 
     /**
      * Accesses this <code>Card's</code> suit.
