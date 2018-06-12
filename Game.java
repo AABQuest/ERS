@@ -3,14 +3,16 @@ package aabERS;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable {
 
-	public static final int WIDTH = 720;
+	public static final int WIDTH = 680;
 	public static final int HEIGHT = WIDTH / 12 * 9;
 	public static final int SCALE = 2;
 	public final String TITLE = "Egyptian Ratscrew";
@@ -21,6 +23,28 @@ public class Game extends Canvas implements Runnable {
 	
 	//buffering
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	private BufferedImage spriteSheet = null;
+	
+	private Player p;
+	private Player p2;
+	private Player p3;
+	private Player p4;
+	
+	public void initialize() {
+		BufferedImageLoader loader = new BufferedImageLoader();
+		try {
+			spriteSheet = loader.loadImage("/sprite_sheet.png");
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		addKeyListener(new KeyInput(this));
+		
+		p = new Player(new Deck(), 1, 1, 1, 560, 900, this);
+		p2 = new Player(new Deck(), 2, 1, 2, 100, 450, this);
+		p3 = new Player(new Deck(), 3, 2, 2, 720, 100, this);
+		p4 = new Player(new Deck(), 4, 2, 1, 1260, 600, this);
+	}
 	
 	private synchronized void start() {
 		if(running)
@@ -46,7 +70,7 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	public void run() {
-		
+		initialize();
 		long lastTime = System.nanoTime();
 		final double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -79,7 +103,10 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	private void tick() {
-	
+		p.tick();
+		p2.tick();
+		p3.tick();
+		p4.tick();
 	}
 	
 	private void render() {
@@ -94,11 +121,60 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = bs.getDrawGraphics();
 		/////////////////////////////////
 		
-		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);	
+				
+		p.render(g);
+		p2.render(g);
+		p3.render(g);
+		p4.render(g);
 		
 		/////////////////////////////////
 		g.dispose();
 		bs.show();
+	}
+	
+	public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode();
+		
+		if(key == KeyEvent.VK_Q) {
+			p2.setX(p2.getX() + 500);
+		} else if(key == KeyEvent.VK_W) {
+
+		} else if(key == KeyEvent.VK_C) {
+			p.setY(p.getY() - 350);
+		} else if(key == KeyEvent.VK_V) {
+
+		} else if(key == KeyEvent.VK_M) {
+			p3.setY(p3.getY() + 400);
+		} else if(key == KeyEvent.VK_COMMA) {
+			
+		} else if(key == KeyEvent.VK_OPEN_BRACKET) {
+			p4.setX(p4.getX() - 450);
+		} else if(key == KeyEvent.VK_CLOSE_BRACKET) {
+		
+		}
+	}
+	
+	public void keyReleased(KeyEvent e) {
+		int key = e.getKeyCode();
+		
+		if(key == KeyEvent.VK_Q) {
+			p2.setX(100);
+		} else if(key == KeyEvent.VK_W) {
+
+		} else if(key == KeyEvent.VK_C) {
+			p.setY(900);
+		} else if(key == KeyEvent.VK_V) {
+
+		} else if(key == KeyEvent.VK_M) {
+			p3.setY(100);
+		} else if(key == KeyEvent.VK_COMMA) {
+			
+		} else if(key == KeyEvent.VK_OPEN_BRACKET) {
+			p4.setX(1260);
+		} else if(key == KeyEvent.VK_CLOSE_BRACKET) {
+		
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -118,4 +194,9 @@ public class Game extends Canvas implements Runnable {
 	
 		game.start();
 	}	
+	
+	public BufferedImage getSpriteSheet() {
+		return spriteSheet;
+	}
+	
 }
